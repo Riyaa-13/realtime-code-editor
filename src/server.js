@@ -1,7 +1,9 @@
+require("dotenv").config();
+
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
-const { v4: uuidv4 } = require("uuid");
+const { randomBytes } = require("crypto");
 const cors = require("cors");
 const { connectDB } = require("./db");
 const { getSession, updateSession } = require("./session");
@@ -19,7 +21,7 @@ connectDB();
 
 // REST endpoints
 app.post("/sessions", async (req, res) => {
-  const sessionId = uuidv4();
+  const sessionId = randomBytes(16).toString("hex");
   const session = await getSession(sessionId);
   res.status(201).json({ sessionId: session.sessionId, code: session.code });
 });
