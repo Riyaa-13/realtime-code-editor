@@ -2,6 +2,25 @@
 
 A real-time collaborative code editor supporting 100+ concurrent users with sub-100ms sync latency. Built with Node.js, Socket.io, and MongoDB.
 
+## 🌐 Live Server
+
+Base URL: `http://54.227.196.176:3000`
+
+| Method | Endpoint             | Description                 |
+| ------ | -------------------- | --------------------------- |
+| POST   | /sessions            | Create a new editor session |
+| GET    | /sessions/:sessionId | Get session with code state |
+
+## 🧪 Test the API
+
+```bash
+# Create a session
+curl -X POST http://54.227.196.176:3000/sessions
+
+# Get a session
+curl http://54.227.196.176:3000/sessions/{sessionId}
+```
+
 ## Architecture
 
 Client A ──┐
